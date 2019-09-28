@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Search from "../components/Search";
 import RecipeList from "../components/RecipeList";
-import { recipeData } from "../data/tempList";
+import { tempList } from "../data/tempList";
 
 export class Recipes extends Component {
     constructor(props) {
@@ -9,7 +9,7 @@ export class Recipes extends Component {
     }
 
     state = {
-        recipes: recipeData,
+        recipes: tempList,
         search: ""
     };
 

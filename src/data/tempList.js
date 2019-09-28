@@ -1,4 +1,4 @@
-export const recipeData = [
+export const tempList = [
   {
     publisher: "Closet Cooking",
     title: "Jalapeno Popper Grilled Cheese Sandwich",
