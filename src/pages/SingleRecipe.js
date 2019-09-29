@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { tempDetails } from "../data/tempDetails";
+// import { tempDetails } from "../data/tempDetails";
 
 export class SingleRecipe extends Component {
     constructor(props) {
@@ -9,10 +9,28 @@ export class SingleRecipe extends Component {
         const id = this.props.match.params.id;
 
         this.state = {
-            recipe: tempDetails,
+            // recipe: tempDetails,
+            recipe: {},
             id: id,
-            loading: false
+            loading: true
         };
+    }
+
+    async componentDidMount() {
+        // env - Environment Variables
+        const url = `https://www.food2fork.com/api/get?key=${process.env.REACT_APP_API_KEY}&rId=${this.state.id}`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            // console.log(data); // ► {recipe: {…}}
+            this.setState({
+                recipe: data.recipe,
+                loading: false
+            });
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     render() {
@@ -81,7 +99,9 @@ export class SingleRecipe extends Component {
                         <ul className="list-group mt-4">
                             <h2 className="mt-3 mb-4">Ingredients:</h2>
                             {ingredients.map((item, i) => (
-                                <li key={i} className="list-group-item">{item}</li>
+                                <li key={i} className="list-group-item">
+                                    {item}
+                                </li>
                             ))}
                         </ul>
                     </div>
