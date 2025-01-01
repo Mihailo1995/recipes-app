@@ -1,1 +1,1 @@
-https://recipes-app-777.netlify.com/
+https://recipes-app-777.netlify.app/
